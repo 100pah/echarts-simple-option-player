@@ -112,7 +112,6 @@ class SimpleOptionPlayer {
             opt.chart
             && isObject(opt.dataMeta)
             && isArray(opt.optionList)
-            && opt.seriesIndex != null
             && opt.optionList.length
         );
 
@@ -121,7 +120,7 @@ class SimpleOptionPlayer {
         const optionList = this._optionList = opt.optionList;
         const optionMap = this._optionMap = {} as SimpleOptionPlayer['_optionMap'];
         this._replaceMerge = opt.replaceMerge;
-        this._seriesIndex = opt.seriesIndex;
+        this._seriesIndex = opt.seriesIndex || 0;
         this._currOptionIdx = null;
 
         for (let i = 0; i < optionList.length; i++) {
@@ -184,7 +183,7 @@ class SimpleOptionPlayer {
                     },
                     to: {
                         seriesIndex: targetSeriesIndex,
-                        dimension: common.uniqueDimension,
+                        dimension: common.uniqueDimension
                     },
                     dividingMethod: common.dividingMethod
                 };
