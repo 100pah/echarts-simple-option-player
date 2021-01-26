@@ -37,14 +37,13 @@
             assert(opt.chart
                 && isObject(opt.dataMeta)
                 && isArray(opt.optionList)
-                && opt.seriesIndex != null
                 && opt.optionList.length);
             this._chart = opt.chart;
             this._dataMeta = opt.dataMeta;
             var optionList = this._optionList = opt.optionList;
             var optionMap = this._optionMap = {};
             this._replaceMerge = opt.replaceMerge;
-            this._seriesIndex = opt.seriesIndex;
+            this._seriesIndex = opt.seriesIndex || 0;
             this._currOptionIdx = null;
             for (var i = 0; i < optionList.length; i++) {
                 var optionWrap = optionList[i];
@@ -94,7 +93,7 @@
                         },
                         to: {
                             seriesIndex: targetSeriesIndex,
-                            dimension: common.uniqueDimension,
+                            dimension: common.uniqueDimension
                         },
                         dividingMethod: common.dividingMethod
                     };
